@@ -3,43 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="Template.css">
     <title>Epilepsy Prediction - Epily</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+        section[id="cardholder"] {
+            height: 500px;
+            width: 90%;
+            display: flex; /* Changed from flexbox to flex */
+            overflow-x: scroll; /* Overflow Horizontally */
+            background-color: transparent;
+            box-shadow: none;
         }
-        header {
-            background-color: #007BFF;
+        section[class="card"] {
+            position: relative; /* Added for button positioning */
+            height: 400px;
+            width: 300px;
+            margin-left: 20px;
+            flex: 0 0 auto; /* Added to keep cards in a single line */
+        }
+        .more-button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #868585;
             color: white;
-            padding: 20px;
-            text-align: center;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
         }
-        nav {
-            text-align: center;
-            margin: 20px 0;
+        .more-button:hover {
+            background-color: #000;
+            transform: scale(1.05); /* Slightly larger on hover */
         }
-        nav a {
-            margin: 0 15px;
+        .container-stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 70px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            margin: 20px;
+        }
+        .left {
+            width: 40%;
+            padding-right: 10px;
+        }
+        h2[id="statshead"]{
+            font-size: 50px;
+            font-weight: lighter;
+        }
+        p[id="statsheadpara"]{
+            font-size: 20px;
+            font-weight: lighter;
+        }
+        .right {
+            width: auto;
+            text-align: center;
+            /*display: flex;
+            justify-content: center;
+            align-items: center;*/
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6a1b9a;
+            color: white;
             text-decoration: none;
-            color: #007BFF;
+            border-radius: 5px;
+            margin-top: 20px;
         }
-        section {
-            padding: 20px;
-            background-color: white;
-            margin: 20px auto;
-            width: 80%;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        .stats {
+            height: 200px;
+            width: 200px;
+            font-size: 24px;
+            font-weight: bold;
+            float: left;
+            margin-right: 29px;
+            margin-top: 200px;
         }
-        footer {
-            background-color: #007BFF;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            bottom: 0;
-            width: 100%;
+        font[class="statsvalue"]{
+            color: #6a1b9a;
+            font-size: 60px;
+        }
+        font[class="statsvaluevalue"]{
+            font-weight: lighter;
+            font-size: 17px;
+        }
+        .description {
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -57,33 +111,62 @@
     <a href="Contact.html">Contact</a>
 </nav>
 
-<section id="home">
-    <h2>Welcome to Epily</h2>
-    <p>Predict and manage epilepsy with confidence.</p>
-    <p>Your trusted companion for managing epilepsy</p>
+<section id="cardholder">
+    <section id="home" class="card">
+        <h2>New to Epilepsy?</h2>
+        <p>Learn about epilepsy, seizures, and syndromes.</p>
+        <p>Your trusted companion for managing epilepsy</p>
+        <button class="more-button">More</button> <!-- Added button -->
+    </section>
+    
+    <section id="features" class="card">
+        <h2>App Features</h2>
+        <ul>
+            <li>Real-time seizure prediction</li>
+            <li>Personalized alerts and notifications</li>
+            <li>Comprehensive seizure tracking</li>
+            <li>Educational resources and support</li>
+        </ul>
+        <button class="more-button">More</button> <!-- Added button -->
+    </section>
+    
+    <section id="about" class="card">
+        <h2>About Us</h2>
+        <p>Epily is dedicated to improving the lives of those affected by epilepsy through cutting-edge prediction technology and support. Our mission is to provide peace of mind and enhance quality of life.</p>
+        <p>https://www.epilepsy.com/what-is-epilepsy</p>
+        <button class="more-button">More</button> <!-- Added button -->
+    </section>
+    
+    <section id="contact" class="card">
+        <h2>Contact Us</h2>
+        <p>Email: er.vivekratan@gmail.com</p>
+        <p>Phone: +91 8273551835</p>
+        <p>Address: SoICT, B.Tech ECE AI & ML, Gautam Buddha University, Greater Noida</p>
+        <button class="more-button">More</button> <!-- Added button -->
+    </section>
 </section>
 
-<section id="features">
-    <h2>App Features</h2>
-    <ul>
-        <li>Real-time seizure prediction</li>
-        <li>Personalized alerts and notifications</li>
-        <li>Comprehensive seizure tracking</li>
-        <li>Educational resources and support</li>
-    </ul>
-</section>
-
-<section id="about">
-    <h2>About Us</h2>
-    <p>Epily is dedicated to improving the lives of those affected by epilepsy through cutting-edge prediction technology and support. Our mission is to provide peace of mind and enhance quality of life.</p>
-</section>
-
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: er.vivekratan@gmail.com</p>
-    <p>Phone: +91 8273551835</p>
-    <p>Address: SoICT, B.Tech ECE AI & ML, Gautam Buddha University, Greater Noida</p>
-</section>
+<div class="container-stats">
+    <div class="left">
+        <h2 id="statshead">Your Actions <br> Make a <br> Difference</h2>
+        <p id="statsheadpara">With more than 3.4 million people <br> living with epilepsy nationwide, the <br> impact of our work matters. With <br> your help, we've made huge strides <br> in epilepsy training, research, and <br> advocacy.</p>
+        <a href="#" class="btn">See Our Impact</a>
+    </div>
+    <div class="right">
+        <p class="stats">
+            <font class="statsvalue">1.6M+</font>
+            <font class="statsvaluevalue">trained in seizure recognition and first aid</font>
+        </p>
+        <p class="stats">
+            <font class="statsvalue" style="color: rgb(134, 11, 11);">$68M+ </font>
+            <font class="statsvaluevalue">for epilepsy research</font>
+        </p>
+        <p class="stats">
+            <font class="statsvalue">100K+</font>
+            <font class="statsvaluevalue">ambassadors and advocates</font>
+        </p>
+    </div>
+</div
 
 <footer>
     <p>&copy; 2024 Epily. All rights reserved.</p>
