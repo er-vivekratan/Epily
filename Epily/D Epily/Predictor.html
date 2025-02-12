@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="Template.css">
+    <title>Epily - Seizure Prediction Calculator</title>
+    <style>
+        section {
+            width: 300px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+        }
+        .form-group div {
+            display: flex;
+            /*justify-content: space-between;*/
+            width: 100%;
+        }
+        h2[id="title"]{
+            font-size: 15px;
+            margin-top: -10px;
+            font-family: Rubik;
+        }
+        .form-group input[type="date"],
+        .form-group input[type="time"] {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            outline: none;
+            overflow-y: auto;
+        }
+        input[type="date"]{
+            width: 120px; /*calc(50% - 5px);*/
+            margin-right: 2.5px;
+        }
+        input[type="time"]{
+            width: 70px; /*calc(40% - 5px);*/
+            margin-left: 2.5px;
+        }
+        .form-group input[type="date"]:focus,
+        .form-group input[type="time"]:focus {
+            border-color: #be2ed6;
+        }
+        .remove-button {
+            width: 30px;
+            padding: 5px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: transparent;
+            color: red;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .remove-button:hover {
+            background-color: transparent;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #be2ed6;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #b30062;
+        }
+        .result {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            display: none;
+            padding: 10px;
+            margin: -10px 0;
+            font-size: 16px;
+            font-weight: bold;
+            color: #be2ed6;
+        }
+        ul li {
+            margin-left: -40px;
+        }
+        ul li[id="-2"], [id="+2"] {
+            color: yellow;
+        }
+        ul li[id="-1"], [id="+1"] {
+            color: orange;
+        }
+        ul li[id="00"] {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.png" style="height: 80px; float: left;">
+    <h1>Epily - Seizure Prediction Calculator</h1>
+</header>
+
+<nav>
+    <a href="Home.html">Home</a>
+    <a href="Predictor.html">Features</a>
+    <a href="About.html">About Us</a>
+    <a href="Contact.html">Contact</a>
+</nav>
+
+<section>
+    <form id="calculatorForm">
+        <h1>Attack Calculator</h1>
+        <h2 id="title">Input Your Data</h2>
+        <div class="form-group">
+            <label for="most-prevattack-date">Most Recent Attack</label>
+            <div>
+                <input type="date" id="most-prevattack-date" name="mld" aria-label="Date of most recent attack">
+                <input type="time" id="most-prevattack-time" name="mlt" aria-label="Time of most recent attack">
+            </div>
+        </div>
+        <div id="prevattacks">
+            <!-- Dynamic Previous Attack inputs will be added here -->
+        </div>
+        <button type="button" id="addPrevAttack">Add Previous Attack</button>
+        <button type="button" id="hdcal" onclick="calculatePrediction()">Calculate Upcoming Attack's</button>
+    </form>
+    <div class="result" id="result">
+        <h1 style="color: #000;">Prediction Result</h1>
+        <ul type="none">
+            <li id="-2">00-00-0000, 00:00 - 00:00</li>
+            <li id="-1">00-00-0000, 00:00 - 00:00</li>
+            <li id="00">00-00-0000, 00:00 - 00:00</li>
+            <li id="+1">00-00-0000, 00:00 - 00:00</li>
+            <li id="+2">00-00-0000, 00:00 - 00:00</li>
+        </ul>
+        <button type="button" onclick="showCalculatorForm()">Show Calculator</button>
+    </div>
+</section>
+<footer>
+    <p>&copy; 2024 Epily. All rights reserved.</p>
+</footer>
+
+<script>
+    let attackCount = 0;
+    const maxAttacks = 2; // Limit to 2 previous attacks
+
+    document.getElementById('addPrevAttack').addEventListener('click', function() {
+        if (attackCount < maxAttacks) {
+            const prevattacksDiv = document.getElementById('prevattacks');
+            const newAttackDiv = document.createElement('div');
+            newAttackDiv.className = 'form-group';
+            newAttackDiv.innerHTML = `
+                <div>
+                    <input type="date" name="ld" required aria-label="Date of previous attack">
+                    <input type="time" name="lt" required aria-label="Time of previous attack">
+                    <button type="button" class="remove-button" onclick="removeAttack(this)">❌</button>
+                </div>
+            `;
+            prevattacksDiv.appendChild(newAttackDiv);
+            attackCount++;
+        } 
+
+        if (attackCount >= maxAttacks) {
+            document.getElementById('addPrevAttack').style.display = "none";
+        }
+    });
+
+    function removeAttack(button) {
+        const attackDiv = button.parentElement.parentElement;
+        attackDiv.remove();
+        attackCount--;
+        document.getElementById('addPrevAttack').style.display = "block";
+    }
+
+    function calculatePrediction() {
+        const mld = document.getElementById('most-prevattack-date').value;
+        const mlt = document.getElementById('most-prevattack-time').value;
+        const prevAttackInputs = document.querySelectorAll('#prevattacks .form-group');
+        const predictions = [];
+
+        prevAttackInputs.forEach(attack => {
+            const ld = attack.querySelector('input[name="ld"]').value;
+            const lt = attack.querySelector('input[name="lt"]').value;
+            const prediction = `${ld}, ${lt} - ${parseInt(lt.split(':')[0]) + 1}:${lt.split(':')[1]}`;
+            predictions.push(prediction);
+        });
+
+        document.getElementById('calculatorForm').style.display = "none";
+        document.getElementById('result').style.display = "block";
+        document.getElementById('-2').textContent = predictions[0] || "No data";
+        document.getElementById('-1').textContent = predictions[1] || "No data";
+        document.getElementById('00').textContent = predictions[2] || "No data";
+        document.getElementById('+1').textContent = predictions[3] || "No data";
+        document.getElementById('+2').textContent = predictions[4] || "No data";
+    }
+
+    function showCalculatorForm() {
+        document.getElementById('result').style.display = "none";
+        document.getElementById('calculatorForm').style.display = "block";
+    }
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('most-prevattack-date').setAttribute('max', today);
+
+        const dateInputs = document.querySelectorAll('input[type="date"][name="ld"]');
+        dateInputs.forEach(input => input.setAttribute('max', today));
+    });
+
+</script>
+
+</body>
+</html>

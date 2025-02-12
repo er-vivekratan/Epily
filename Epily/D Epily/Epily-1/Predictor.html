@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epily - Seizure Prediction Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        section {
+            padding: 20px;
+            background-color: white;
+            margin: 20px auto;
+            width: 80%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        section {
+            padding: 20px;
+            background-color: white;
+            margin: 20px auto;
+            width: 80%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.png" style="height: 80px; float: left;">
+    <h1>Epily - Seizure Prediction Calculator</h1>
+</header>
+
+<nav>
+    <a href="Home.html">Home</a>
+    <a href="Predictor.html">Features</a>
+    <a href="About.html">About Us</a>
+    <a href="Contact.html">Contact</a>
+</nav>
+
+
+<section>
+    <h2>Input Your Data</h2>
+    <form id="calculatorForm">
+        <label for="feature1">Last Attack:</label>
+        <input type="number" id="feature1" name="feature1" required>
+        
+        <label for="feature2">Feature 2 (e.g., EEG Reading):</label>
+        <input type="number" id="feature2" name="feature2" required>
+        
+        <label for="feature3">Feature 3 (e.g., Stress Level):</label>
+        <input type="number" id="feature3" name="feature3" required>
+
+        <button type="button" onclick="calculatePrediction()">Calculate Prediction</button>
+    </form>
+    <h2>Prediction Result</h2>
+    <p id="result"></p>
+</section>
+
+<script>
+    function calculatePrediction() {
+        // Get input values
+        const feature1 = document.getElementById('feature1').value;
+        const feature2 = document.getElementById('feature2').value;
+        const feature3 = document.getElementById('feature3').value;
+
+        // Simple example calculation (replace with your prediction algorithm)
+        const prediction = (parseFloat(feature1) + parseFloat(feature2) + parseFloat(feature3)) / 3;
+
+        // Display result
+        document.getElementById('result').textContent = `Predicted Seizure Likelihood: ${prediction.toFixed(2)}%`;
+    }
+</script>
+
+</body>
+</html>
