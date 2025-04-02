@@ -2,35 +2,49 @@ window.Epily = {
     "Epily": {
         name: "Epily",
         path: "er.vivekratan/Repositories/Epily",
-        folders: [],
+        folders: ["Blog", "Epily", "sync"],
         files: [
-            { name: "Game.html", type: "html", size: "-", modified: "-", link: "#" },
-            { name: "README.md", type: "md", size: "-", modified: "-", link: "#" },
-            { name: "Winning States", type: "", size: "-", modified: "-", link: "#" },
-            { name: "Without Counter.html", type: "html", size: "-", modified: "-", link: "#" },
-            { name: "oldjs.js", type: "js", size: "-", modified: "-", link: "" },
-            { name: "tic-tac-toe.png", type: "image", size: "-", modified: "-", link: "#" },
-            { name: "tic-tac-toe0.jpg", type: "image", size: "-", modified: "-", link: "#" },
-            { name: "tic-tac-toe1.jpg", type: "image", size: "-", modified: "-", link: "#" },
-            { name: "tic-tac-toe2.jpg", type: "image", size: "-", modified: "-", link: "#" },
+            { name: "About.html", type: "html", size: "-", modified: "-", link: "#" },
+            { name: "Check", type: "", size: "-", modified: "-", link: "#" },
+            { name: "Contact.html", type: "html", size: "-", modified: "-", link: "#" },
+            { name: "Home.html", type: "html", size: "-", modified: "-", link: "#" },
+            { name: "Predictor.html", type: "html", size: "-", modified: "-", link: "#" },
+            { name: "Template.css", type: "css", size: "-", modified: "-", link: "" },
+            { name: "logo.png", type: "image", size: "-", modified: "-", link: "#" },
         ]
     },
-    "D-Tic-Tac-Toe": {
-        name: "D-Tic-Tac-Toe",
-        path: "er.vivekratan/Repositories/Tic-Tac-Toe/D-Tic-Tac-Toe",
-        folders: [],
+    "Blog": {
+        name: "Blog",
+        path: "er.vivekratan/Repositories/Epily/Blog",
+        folders: ["D-Epily"],
         files: [
-            { name: "Game.html", type: "html", size: "-", modified: "-", link: "#" },
-            { name: "README.md", type: "md", size: "-", modified: "-", link: "#" },
-            { name: "T3.css", type: "css", size: "-", modified: "-", link: "#" },
-            { name: "T3.html", type: "html", size: "-", modified: "-", link: "#" },
-            { name: "T3.js", type: "javascript", size: "-", modified: "-", link: "#" },
-            { name: "Winning States", type: "-", size: "-", modified: "-", link: "#" },
-            { name: "Without Counter.html", type: "html", size: "-", modified: "-", link: "#" },
-            { name: "oldjs.js", type: "javascript", size: "-", modified: "-", link: "#" },
-            { name: "tic-tac-toe0.jpg", type: "image", size: "-", modified: "-", link: "#" },
-            { name: "tic-tac-toe1.jpg", type: "image", size: "-", modified: "-", link: "#" },
-            { name: "tic-tac-toe2.jpg", type: "image", size: "-", modified: "-", link: "#" },
+            { name: "1.html", type: "html", size: "-", modified: "-", link: "#" },
+        ]
+    },
+    "Epily": {
+        name: "Epily",
+        path: "er.vivekratan/Repositories/Epily/Epily",
+        folders: ["Undefined folder", "Blog", "D Epily", "sync"],
+        files: [
+            { name: "About.html", type: "html", size: "-", modified: "-", link: "#" },
+            { name: "Check", type: "", size: "-", modified: "-", link: "#" },
+            { name: "Contact.html", type: "html", size: "-", modified: "-", link: "#" },
+            { name: "Home.html", type: "html", size: "-", modified: "-", link: "#" },
+            { name: "Predictor.html", type: "html", size: "-", modified: "-", link: "#" },
+            { name: "Template.css", type: "css", size: "-", modified: "-", link: "" },
+            { name: "logo.png", type: "image", size: "-", modified: "-", link: "#" },
+        ]
+    },
+    "sync": {
+        name: "sync",
+        path: "er.vivekratan/Repositories/Epily/sync",
+        folders: [ ],
+        files: [
+            { name: "About.html", type: "html", size: "-", modified: "-", link: "#" },
+            { name: "Contact.html", type: "html", size: "-", modified: "-", link: "#" },
+            { name: "Home.html", type: "html", size: "-", modified: "-", link: "#" },
+            { name: "Predictor.html", type: "html", size: "-", modified: "-", link: "#" },
+            { name: "Template.css", type: "css", size: "-", modified: "-", link: "#" },
         ]
     }
 };
